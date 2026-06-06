@@ -90,10 +90,12 @@ When the current item is excluded (or nothing is playing, or paused with
 
 ## Troubleshooting
 
-- **`invalid session` loop / never goes READY** → the `DISCORD_USER_TOKEN` is wrong or
-  expired (e.g. you changed your password). Re-grab it. Discord client internals also
-  shift over time; if a valid token still won't identify, bump `client_build_number` in
-  `app/discord_presence.py`.
+- **`fatal gateway close 4004`** → the `DISCORD_USER_TOKEN` is wrong or expired (e.g. you
+  changed your password). Re-grab it.
+- **`invalid session (resumable=...)` occasionally** is normal — the client waits 1–5s and
+  resumes/re-identifies. A healthy run logs `gateway READY` once and then stays quiet. If
+  you *never* see `gateway READY` and it loops, Discord client internals may have shifted;
+  bump `client_build_number` in `app/discord_presence.py`.
 - **Status shows but no image** → check `STATIC_LARGE_IMAGE` matches an uploaded Art Asset
   key; for poster art confirm `JELLYFIN_PUBLIC_URL` is HTTPS and reachable from the
   public internet.

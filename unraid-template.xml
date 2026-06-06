@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>jellyfin-discord-presence</Name>
+  <Repository>local/jellyfin-discord-presence:latest</Repository>
+  <Registry/>
+  <Network>homelab</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Headless Discord Rich Presence for Jellyfin. Polls the Jellyfin API for what the chosen user is playing and shows it on your Discord profile using your user token (no Discord client required). Supports per-library and per-media-type exclusions. NOTE: driving a user account this way is a self-bot and violates Discord's Terms of Service; use at your own risk.</Overview>
+  <Category>MediaApp:Video Other:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="JELLYFIN_URL" Target="JELLYFIN_URL" Default="http://Jellyfin:8096" Mode="" Description="Internal address the container uses to reach Jellyfin. On the homelab bridge the container name resolves, so http://Jellyfin:8096 works." Type="Variable" Display="always" Required="true" Mask="false">http://Jellyfin:8096</Config>
+  <Config Name="JELLYFIN_API_KEY" Target="JELLYFIN_API_KEY" Default="" Mode="" Description="Jellyfin Dashboard -> API Keys -> +. Needs admin scope to read /Sessions." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="JELLYFIN_USERNAME" Target="JELLYFIN_USERNAME" Default="" Mode="" Description="The Jellyfin account whose playback to mirror." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="DISCORD_USER_TOKEN" Target="DISCORD_USER_TOKEN" Default="" Mode="" Description="Your Discord user token (self-bot). Browser -> discord.com -> F12 -> Network -> any /api/ request -> 'authorization' header. Keep secret." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="DISCORD_APP_ID" Target="DISCORD_APP_ID" Default="" Mode="" Description="Discord Developer Portal -> your Application -> Application ID. Used for the activity name and art assets." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="EXCLUDE_LIBRARIES" Target="EXCLUDE_LIBRARIES" Default="" Mode="" Description="Comma-separated library names to hide (exactly as shown in Jellyfin), e.g. Anime,Home Videos." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="EXCLUDE_MEDIA_TYPES" Target="EXCLUDE_MEDIA_TYPES" Default="" Mode="" Description="Comma-separated categories to hide: movie, episode (tv/shows), music (audio), musicvideo, livetv, book, trailer." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="JELLYFIN_PUBLIC_URL" Target="JELLYFIN_PUBLIC_URL" Default="" Mode="" Description="Optional. Public HTTPS Jellyfin URL (your reverse-proxy domain) so Discord can fetch poster art. Leave blank for a static logo." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="ACTIVITY_NAME" Target="ACTIVITY_NAME" Default="Jellyfin" Mode="" Description="Shows as 'Watching &lt;name&gt;' / 'Listening to &lt;name&gt;'." Type="Variable" Display="advanced" Required="false" Mask="false">Jellyfin</Config>
+  <Config Name="POLL_INTERVAL" Target="POLL_INTERVAL" Default="15" Mode="" Description="Seconds between Jellyfin checks." Type="Variable" Display="advanced" Required="false" Mask="false">15</Config>
+  <Config Name="SHOW_PAUSED" Target="SHOW_PAUSED" Default="true" Mode="" Description="Keep the presence up (no progress bar) while paused." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="STATIC_LARGE_IMAGE" Target="STATIC_LARGE_IMAGE" Default="jellyfin" Mode="" Description="Art-asset key (uploaded under Developer Portal -> Rich Presence -> Art Assets) used when poster art is unavailable." Type="Variable" Display="advanced" Required="false" Mask="false">jellyfin</Config>
+  <Config Name="SMALL_IMAGE_PLAYING" Target="SMALL_IMAGE_PLAYING" Default="" Mode="" Description="Optional small badge art-asset key for the playing state." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="SMALL_IMAGE_PAUSED" Target="SMALL_IMAGE_PAUSED" Default="" Mode="" Description="Optional small badge art-asset key for the paused state." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="INFO" Mode="" Description="DEBUG for verbose troubleshooting." Type="Variable" Display="advanced" Required="false" Mask="false">INFO</Config>
+</Container>

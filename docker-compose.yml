@@ -1,0 +1,8 @@
+services:
+  jellyfin-discord-presence:
+    build: .
+    # After you build & push your own image you can swap the line above for:
+    # image: ghcr.io/<you>/jellyfin-discord-presence:latest
+    container_name: jellyfin-discord-presence
+    restart: unless-stopped
+    env_file: .env

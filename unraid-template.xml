@@ -8,13 +8,13 @@
   <MyMAC/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
-  <ReadMe/>
+  <Support>https://github.com/johagan94/jellyfin-discord-presence/issues</Support>
+  <Project>https://github.com/johagan94/jellyfin-discord-presence</Project>
+  <ReadMe>https://github.com/johagan94/jellyfin-discord-presence/blob/main/README.md</ReadMe>
   <Overview>Headless Discord Rich Presence for Jellyfin. Polls the Jellyfin API for what the chosen user is playing and shows it on your Discord profile using your user token (no Discord client required). Supports per-library and per-media-type exclusions. NOTE: driving a user account this way is a self-bot and violates Discord's Terms of Service; use at your own risk.</Overview>
   <Category>MediaApp:Video Other:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/johagan94/jellyfin-discord-presence/main/unraid-template.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jellyfin-logo.png</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>

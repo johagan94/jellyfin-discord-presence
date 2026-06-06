@@ -92,8 +92,10 @@ class DiscordPresence:
             await asyncio.sleep(self._next_wait)
 
     async def _connect_once(self, url):
+        # max_msg_size=0 disables aiohttp's 4 MiB cap: a user account's READY
+        # payload can exceed it, which otherwise closes the socket with code 1009.
         async with self.s.ws_connect(
-            url, heartbeat=None, timeout=aiohttp.ClientTimeout(total=30)
+            url, heartbeat=None, max_msg_size=0, timeout=aiohttp.ClientTimeout(total=30)
         ) as ws:
             self.ws = ws
             self._acked = True

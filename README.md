@@ -99,6 +99,9 @@ When the current item is excluded (or nothing is playing, or paused with
   resumes/re-identifies. A healthy run logs `gateway READY` once and then stays quiet. If
   you *never* see `gateway READY` and it loops, Discord client internals may have shifted;
   bump `client_build_number` in `app/discord_presence.py`.
+- **`gateway closed (code=1009)` loop** → the WebSocket message-size cap was too small for a
+  large user-account READY. Handled via `max_msg_size=0`; if you forked an older copy, add it
+  to the `ws_connect` call.
 - **Status shows but no image** → check `STATIC_LARGE_IMAGE` matches an uploaded Art Asset
   key; for poster art confirm `JELLYFIN_PUBLIC_URL` is HTTPS and reachable from the
   public internet.

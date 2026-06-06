@@ -1,0 +1,3 @@
+# Code here runs inside Linux containers — force LF everywhere.
+# (Windows core.autocrlf has caused phantom diffs/build breakage before.)
+* text=auto eol=lf

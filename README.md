@@ -59,7 +59,7 @@ so only the artwork is exposed. Leave blank for LAN-only setups → the static l
 
 ```bash
 cp .env.example .env      # then edit .env with the values above
-docker compose up -d --build
+docker compose up -d      # pulls ghcr.io/johagan94/jellyfin-discord-presence
 docker compose logs -f    # watch for "gateway READY (logged in as ...)"
 ```
 
@@ -68,11 +68,14 @@ When you start playing something in Jellyfin you should see a
 poll interval (~15 s).
 
 ### On Unraid
-- **Easiest:** install the *Docker Compose Manager* plugin, point a new stack at this
-  folder (copied to e.g. `/mnt/user/appdata/jellyfin-discord-presence`), and start it.
-- **Or** build the image once (`docker build -t local/jellyfin-discord-presence .`) and add
-  a container via the Docker tab, setting each variable from `.env.example` as a Key/Value.
-  No ports, no volumes needed — it only makes outbound connections.
+The image is published to **GHCR** by CI (`.github/workflows/docker-publish.yml`):
+`ghcr.io/johagan94/jellyfin-discord-presence:latest` (make the package **public** once, under
+the repo's Packages settings, so Unraid can pull it without credentials).
+
+Docker tab → **Add Container**, set **Repository** to
+`ghcr.io/johagan94/jellyfin-discord-presence:latest`, and add each variable from
+`.env.example` as a Key/Value. No ports or volumes — it only makes outbound connections.
+To update later, just hit **Force Update** (CI keeps `:latest` current).
 
 ---
 

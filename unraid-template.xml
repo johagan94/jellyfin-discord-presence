@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>jellyfin-discord-presence</Name>
-  <Repository>local/jellyfin-discord-presence:latest</Repository>
-  <Registry/>
+  <Repository>ghcr.io/johagan94/jellyfin-discord-presence:latest</Repository>
+  <Registry>https://github.com/johagan94/jellyfin-discord-presence/pkgs/container/jellyfin-discord-presence</Registry>
   <Network>homelab</Network>
   <MyIP/>
   <MyMAC/>
